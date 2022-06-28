@@ -3,7 +3,7 @@ const cors = require('cors')
 const morgan = require('morgan')
 const app = express()
 const {BadRequestError, NotFoundError} = require('./utils/errors')
-
+const {PORT} = require('./config')
 
 //APP USES - Cross Origin Sharing
 app.use(cors())
@@ -28,7 +28,7 @@ app.use((error, req, res, next) => {
 
 
 //PORT RUNNERS
-const PORT = process.env.PORT || 3001
+// const PORT = process.env.PORT || 3001
 
 app.listen(PORT, () => {
     console.log('Server running http://localhost:' + PORT)
