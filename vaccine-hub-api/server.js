@@ -4,6 +4,7 @@ const morgan = require('morgan')
 const app = express()
 const {BadRequestError, NotFoundError} = require('./utils/errors')
 const {PORT} = require('./config')
+const authRoutes = require('./routes/auth')
 
 //APP USES - Cross Origin Sharing
 app.use(cors())
@@ -11,6 +12,7 @@ app.use(cors())
 app.use(express.json())
 //APP USE - Log request info
 app.use(morgan('tiny'))
+app.use('/auth', authRoutes)
 
 
 //ERROR HANDLING APP USES
@@ -33,3 +35,5 @@ app.use((error, req, res, next) => {
 app.listen(PORT, () => {
     console.log('Server running http://localhost:' + PORT)
 })
+
+
